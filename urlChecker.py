@@ -1,9 +1,12 @@
 import requests
 import sys
+import ssl
 import getopt
 
 
-file = r'url.txt'
+requests.packages.urllib3.disable_warnings()
+ssl._create_default_https_context = ssl._create_unverified_context
+
 
 headers = {
     'Accept': '*/*',
@@ -11,13 +14,13 @@ headers = {
     'Cache-Control': 'max-age=0',
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
     'Connection': 'keep-alive',
-    'Referer': 'http://www.baidu.com/'
+    'Referer': ''
 }
 
 
 def get_status(url):
     try:
-        r = requests.get(url, allow_redirects = True, timeout=5, headers=headers)
+        r = requests.get(url, allow_redirects=True, verify=False, timeout=5, headers=headers)
         if r.status_code == 200:
             print("[*] \033[1;31;44m%s\033[0m Exist!" % url)
             return True
