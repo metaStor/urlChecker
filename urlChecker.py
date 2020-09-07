@@ -21,7 +21,7 @@ def get_status(url):
     try:
         r = requests.get(url, allow_redirects=True, verify=False, timeout=5, headers=headers)
         if r.status_code >= 200 and r.status_code <= 206:
-            print("[*] \033[1;31;44m%s\033[0m Exist!" % url)
+            print("[*] \033[1;32;44m%s\033[0m Exist!" % url)
             return True
         else:
             print("[!] %s Not Exist!" % url)
