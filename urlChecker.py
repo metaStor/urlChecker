@@ -29,8 +29,9 @@ def get_status(url):
         else:
             print("[!] %s Not Exist!" % url)
             return False, None
-    except:
-        print("[!] %s Not Exist!" % url)
+    except Exception as e:
+        # print(e)
+        print("[!] %s Timeout!" % url)
         return False, None
 
 
