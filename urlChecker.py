@@ -67,9 +67,9 @@ def main(argv):
                 res.append(info)
             url = fp.readline().strip()
     if len(res) > 0:
-        with open(out, 'w') as fp:
+        with open(out, 'w', encoding='utf-8') as fp:
             for u in res:
-                fp.write(u[0] + '\t>>\t' + u[1] + '\n')
+                fp.write(str(u[0]) + '\t>>\t' + str(u[1]) + '\n')
         print("\033[1;32;40m[*] Save result in %s !\033[0m" % out)
 
 
