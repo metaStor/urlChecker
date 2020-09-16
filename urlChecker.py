@@ -19,7 +19,7 @@ headers = {
 def get_status(url):
     try:
         r = requests.get(url, allow_redirects=True, verify=False, timeout=5, headers=headers)
-        if 400 <= r.status_code <= 404:
+        if 200 <= r.status_code <= 206:
             # 获取title
             r.encoding = 'UTF-8'
             content = r.text
