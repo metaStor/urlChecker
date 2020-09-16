@@ -19,7 +19,7 @@ headers = {
 def get_status(url):
     try:
         r = requests.get(url, allow_redirects=True, verify=False, timeout=5, headers=headers)
-        if 200 <= r.status_code <= 206:
+        if 400 <= r.status_code <= 404:
             # 获取title
             r.encoding = 'UTF-8'
             content = r.text
@@ -57,7 +57,7 @@ def main(argv):
         print('checkUrl.py -f <file> -o <out>')
         sys.exit(2)
 
-    with open(file, 'r') as fp:
+    with open(file, 'r', encoding='utf-8') as fp:
         url = fp.readline().strip()
         while url:
             status = get_status(url)
