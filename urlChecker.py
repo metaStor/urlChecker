@@ -25,7 +25,8 @@ def get_status(url):
             content = r.text
             title = re.findall('<title>(.+)</title>', content)
             print("\033[1;32;40m[*] %s Exist! >> %s\033[0m" % (url, title))
-            return True, title[0]
+            # check title if None
+            return True, title[0] if len(title) > 0 else title 
         else:
             print("[!] %s Not Exist!" % url)
             return False, None
