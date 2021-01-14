@@ -28,12 +28,12 @@ def get_status(url, threadm):
             r.encoding = 'UTF-8'
             content = r.text
             title = re.findall('<title>(.+)</title>', content)
-            print("\033[1;32;40m[*] %s Exist! >> %s\033[0m" % (url, title))
+            print("\033[1;32;40m[*] %s Exist!\t>>\t[%d]\t>>\t%s\033[0m" % (url, r.status_code, title))
             # 当前站点信息：url, status_code, title
             info = [url, r.status_code, title]
             res.append(info)
         else:
-            print("[!] %s Not Exist!" % url)
+            print("[!] %s Not Exist!\t>>\t[%d]" % (url, r.status_code))
     except TimeoutError as e:
         # print(e)
         print("[!] %s Timeout!" % url)
