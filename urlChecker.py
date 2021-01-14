@@ -5,6 +5,7 @@ import re
 import getopt
 import threading
 import time
+import pyfiglet
 
 requests.packages.urllib3.disable_warnings()
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -18,6 +19,12 @@ headers = {
 }
 # result
 res = []
+
+
+def initBanner():
+    banners = pyfiglet.figlet_format('urlChecker')
+    print(banners)
+    print('\t\t\t\t\t\tPower by metaStor  v1.1\n\n')
 
 
 def get_status(url, threadm):
@@ -52,11 +59,11 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hf:o:t:", ["help", "file=", "out=", "thread"])
     except getopt.GetoptError:
-        print('checkUrl.py -f <file> -o <out> -t <thread default:64>')
+        print('urlChecker.py -f <file> -o <out> -t <thread default:64>')
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print('checkUrl.py -f <file> -o <out> -t <thread default:64>')
+            print('urlChecker.py -f <file> -o <out> -t <thread default:64>')
             sys.exit()
         elif opt in ("-f", "--file"):
             file = arg
@@ -70,7 +77,7 @@ def main(argv):
                 sys.exit(-1)
 
     if file == '' or out == '':
-        print('checkUrl.py -f <file> -o <out>')
+        print('urlChecker.py -f <file> -o <out>')
         sys.exit(-1)
 
     # Init thread
@@ -97,4 +104,5 @@ def main(argv):
 
 
 if __name__ == "__main__":
+    initBanner()
     main(sys.argv[1:])
