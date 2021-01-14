@@ -5,7 +5,6 @@ import re
 import getopt
 import threading
 import time
-import pyfiglet
 
 requests.packages.urllib3.disable_warnings()
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -22,9 +21,16 @@ res = []
 
 
 def initBanner():
-    banners = pyfiglet.figlet_format('urlChecker')
-    print(banners)
-    print('\t\t\t\t\t\tPower by metaStor  v1.1\n\n')
+    print("""
+             _  ____ _               _
+  _   _ _ __| |/ ___| |__   ___  ___| | _____ _ __
+ | | | | '__| | |   | '_ \ / _ \/ __| |/ / _ \ '__|
+ | |_| | |  | | |___| | | |  __/ (__|   <  __/ |
+  \__,_|_|  |_|\____|_| |_|\___|\___|_|\_\___|_|
+
+
+                                                  Power by metaStor  v1.1
+    """)
 
 
 def get_status(url, threadm):
